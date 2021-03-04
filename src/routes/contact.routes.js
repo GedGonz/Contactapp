@@ -7,4 +7,9 @@ router.get('/', (req, res) => {
 });
 
 
+router.post('/', (req, res) => {
+
+    res.json({ message: 'Saving a new Contact' })
+});
+
 export default router;

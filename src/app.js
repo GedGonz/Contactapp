@@ -5,6 +5,6 @@ const PORT = process.env.PORT || 3000;
 
 app.set('port', PORT);
 
-app.use(IndexRouter);
+app.use('api/contact', IndexRouter);
 
 export default app
