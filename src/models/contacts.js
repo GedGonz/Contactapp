@@ -6,12 +6,12 @@ const ContactSchema = new Schema({
         required: true,
         trim: true
     },
-    lasname: {
+    lastname: {
         type: String,
         required: true,
         trim: true
     },
-    number: {
+    phonenumber: {
         type: Number,
         required: true,
         trim: true

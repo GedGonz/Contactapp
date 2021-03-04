@@ -1,0 +1,14 @@
+GET http://localhost:3000
+###
+GET http://localhost:3000/api/contact
+###
+POST http://localhost:3000/api/contact
+Content-Type: application/json
+
+{
+    "name":"Gerlad",
+    "lastname": "Gonzalez",
+    "age": 29,
+    "phonenumber": 57028362,
+    "picture": "image.png"
+}
