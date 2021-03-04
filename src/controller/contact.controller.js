@@ -26,3 +26,10 @@ export const deleteContact = async(req, res) => {
         message: 'Contact were deleted successfully'
     })
 }
+
+export const updateContact = async(req, res) => {
+
+    await Contacts.findByIdAndUpdate(req.params.id, req.body);
+
+    res.json({ message: "Contact updated successfully" });
+}

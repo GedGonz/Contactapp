@@ -5,6 +5,15 @@ GET http://localhost:3000/api/contact
 GET http://localhost:3000/api/contact/60406e5e9465ac0bcce4fb95
 ###
 DELETE http://localhost:3000/api/contact/60406e5e9465ac0bcce4fb95
+
+### 
+PUT  http://localhost:3000/api/contact/60406836726b592874c8743d
+Content-Type:  application/json
+
+{
+    "name": "Gerlad",
+    "lastname":"Gonzalez"
+}
 ###
 POST http://localhost:3000/api/contact
 Content-Type: application/json

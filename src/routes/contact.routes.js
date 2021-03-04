@@ -11,6 +11,8 @@ router.delete('/:id', ContactController.deleteContact);
 
 router.post('/', ContactController.createContact);
 
+router.put('/:id', ContactController.updateContact);
+
 router.post('/', );
 
 export default router;
