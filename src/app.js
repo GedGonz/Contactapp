@@ -1,5 +1,5 @@
 import express from 'express';
-import IndexRouter from './routes/contact'
+import IndexRouter from './routes/contact.routes';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
