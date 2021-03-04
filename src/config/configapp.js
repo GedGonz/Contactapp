@@ -2,5 +2,5 @@ import { config } from 'dotenv'
 
 config();
 export default {
-    mongodbURL: process.env.MONGODB_URL
+    mongodbURL: process.env.MONGODB_URL || 'mongodb://localhost/Contactdb'
 }

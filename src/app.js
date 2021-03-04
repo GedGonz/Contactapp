@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 app.set('port', PORT);
 
 //middlewaras
-app.use(cors);
+app.use(cors());
 app.use(express.json());
 
 //routes
