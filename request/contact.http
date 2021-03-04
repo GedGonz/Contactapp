@@ -2,13 +2,17 @@ GET http://localhost:3000
 ###
 GET http://localhost:3000/api/contact
 ###
+GET http://localhost:3000/api/contact/60406e5e9465ac0bcce4fb95
+###
+DELETE http://localhost:3000/api/contact/60406e5e9465ac0bcce4fb95
+###
 POST http://localhost:3000/api/contact
 Content-Type: application/json
 
 {
-    "name":"Gerlad",
-    "lastname": "Gonzalez",
+    "name":"Helen",
+    "lastname": "Morales",
     "age": 29,
     "phonenumber": 57028362,
-    "picture": "image.png"
+    "picture": "image2.png"
 }

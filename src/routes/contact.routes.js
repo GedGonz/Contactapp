@@ -1,18 +1,16 @@
-import { Router } from 'express'
-import Contacts from '../models/contacts'
+import { Router } from 'express';
+import * as ContactController from '../controller/contact.controller'
+
 const router = Router();
 
-router.get('/', (req, res) => {
+router.get('/', ContactController.getAllContacts);
 
-    res.json({ message: 'Hellow World in JSON' })
-});
+router.get('/:id', ContactController.getContactById);
 
+router.delete('/:id', ContactController.deleteContact);
 
-router.post('/', async(req, res) => {
+router.post('/', ContactController.createContact);
 
-    const newContact = new Contacts({ name: req.body.name, lastname: req.body.lastname, phonenumber: req.body.phonenumber, picture: req.body.picture })
-    const contact = await newContact.save();
-    res.json(contact)
-});
+router.post('/', );
 
 export default router;
