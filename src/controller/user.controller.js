@@ -17,9 +17,9 @@ export const createNewUser = async(req, res) => {
 export const getAllUsers = async(req, res) => {
     try {
 
-        var users = Users.find();
+        var users = await Users.find();
 
-        if (!users)
+        if (users.length == 0)
             return res
                 .status(400)
                 .json({ message: 'not found users' });

@@ -1,12 +1,13 @@
 import express from 'express';
 import path from 'path';
 import IndexRouter from './routes/contact.routes';
+import UserRoute from "./routes/user.routes";
 import cors from 'cors'
 import multer from 'multer';
 
 const app = express();
 //settings
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 app.set('port', PORT);
 
 //middlewaras
@@ -30,6 +31,8 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/contact', IndexRouter);
+
+app.use('/api/user', UserRoute);
 
 
 
