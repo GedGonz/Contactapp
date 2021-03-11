@@ -24,7 +24,7 @@ export const getAllUsers = async(req, res) => {
 
         if (users.length == 0)
             return res
-                .status(400)
+                .status(404)
                 .json({ message: 'not found users' });
 
         res.json(users);
@@ -37,24 +37,18 @@ export const getAllUsers = async(req, res) => {
 export const loginUser = async(req, res) => {
     try {
 
-
-
         var user = await Users.findOne({ Username: req.body.Username, Password: req.body.Password });
 
-        if (user.length == 0)
+        if (!user)
             return res
-                .status(400)
-                .json({ message: 'not found users' });
+                .status(404)
+                .json({ message: 'not found user: ' + req.body.Username });
 
 
         let token = jwt.sign({
             user
-        }, 'gedgonz', { expiresIn: 86400 });
+        }, 'gedgonz', { expiresIn: '24h' });
 
-
-
-
-        console.log('token: ', token);
         res.json({
             auth: true,
             toke: token
