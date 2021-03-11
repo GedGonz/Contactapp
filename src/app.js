@@ -1,5 +1,6 @@
 import express from 'express';
 import path from 'path';
+import * as UserController from "./controller/user.controller";
 import IndexRouter from './routes/contact.routes';
 import UserRoute from "./routes/user.routes";
 import cors from 'cors'
@@ -33,6 +34,8 @@ app.get('/', (req, res) => {
 app.use('/api/contact', IndexRouter);
 
 app.use('/api/user', UserRoute);
+
+app.use('/api/login', UserController.loginUser);
 
 
 
