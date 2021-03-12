@@ -54,6 +54,8 @@ export const createContact = async(req, res) => {
 
         const contact = await newContact.save();
 
+        await deleteFile();
+
         res.json(contact);
     } catch (error) {
         res.status(500).json({
@@ -86,3 +88,14 @@ export const updateContact = async(req, res) => {
         });
     }
 };
+
+async function deleteFile() {
+    var dir = path.join(__dirname, '../public/uploads');
+
+    fs.rmdirSync(dir, { recursive: true });
+
+    fs.mkdir((dir), (error) => {
+        if (error)
+            console.log(error);
+    });
+}
