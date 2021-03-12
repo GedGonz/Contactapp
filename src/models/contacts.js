@@ -1,30 +1,29 @@
-import { model, Schema } from 'mongoose';
+import { model, Schema } from "mongoose";
 
 const ContactSchema = new Schema({
     name: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
     },
     lastname: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
     },
     phonenumber: {
         type: Number,
         required: true,
-        trim: true
+        trim: true,
     },
     picture: {
         type: String,
         required: true,
-        trim: true
-    }
-
+        trim: true,
+    },
 }, {
     versionKey: false,
-    timestamps: true
+    timestamps: true,
 });
 
-export default model('Contact', ContactSchema)
+export default model("Contact", ContactSchema);

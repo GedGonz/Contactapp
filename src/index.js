@@ -1,6 +1,6 @@
-import app from './app'
-import './database/database'
+import app from "./app";
+import "./database/database";
 
-app.listen(app.get('port'), () => {
-    console.log('server on Ports ', app.get('port'));
+app.listen(app.get("port"), () => {
+    console.log("server on Ports ", app.get("port"));
 });
