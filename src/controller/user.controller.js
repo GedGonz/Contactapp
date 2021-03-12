@@ -45,7 +45,7 @@ export const loginUser = async(req, res) => {
         if (!user)
             return res
                 .status(404)
-                .json({ message: 'Authentication failed: ' + req.body.Username });
+                .json({ message: 'Authentication failed' });
 
         let verify = await bcrypt.compare(req.body.Password, user.Password);
 

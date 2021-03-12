@@ -5,6 +5,8 @@ import IndexRouter from './routes/contact.routes';
 import UserRoute from "./routes/user.routes";
 import cors from 'cors'
 import multer from 'multer';
+import * as auth from "./controller/auth.controller";
+
 
 const app = express();
 //settings
@@ -31,12 +33,14 @@ app.get('/', (req, res) => {
     res.json({ message: 'Welcome to ContactApp' });
 });
 
-app.use('/api/contact', IndexRouter);
+app.use('/api/contact', auth.authenticateToken, IndexRouter);
 
 app.use('/api/user', UserRoute);
 
 app.use('/api/login', UserController.loginUser);
 
+
+app.use('/api/Auth', UserController.loginUser);
 
 
 export default app
