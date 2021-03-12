@@ -1,7 +1,7 @@
 import Users from "../models/users";
 import bcrypt from "bcrypt";
 import * as jwt from "jsonwebtoken";
-
+import config from "../config/configapp";
 
 export const createNewUser = async(req, res) => {
     try {
@@ -53,7 +53,7 @@ export const loginUser = async(req, res) => {
 
             let token = jwt.sign({
                 user
-            }, 'gedgonz', { expiresIn: '24h' });
+            }, config.auth_secret, { expiresIn: '24h' });
 
             res.json({
                 auth: true,

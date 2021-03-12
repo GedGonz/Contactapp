@@ -1,5 +1,5 @@
 import * as jwt from "jsonwebtoken";
-
+import config from "../config/configapp";
 export const authenticateToken = async(req, res, next) => {
 
     try {
@@ -11,7 +11,7 @@ export const authenticateToken = async(req, res, next) => {
             return res
                 .sendStatus(401);
 
-        jwt.verify(token, 'gedgonz', (error, user) => {
+        jwt.verify(token, config.auth_secret, (error, user) => {
             if (error)
                 return res
                     .status(505).send({ auth: false, message: 'Failed to authenticate token' });
