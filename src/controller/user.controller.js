@@ -1,14 +1,16 @@
 import Users from "../models/users";
-
+import bcrypt from "bcrypt";
 import * as jwt from "jsonwebtoken";
 
 
 export const createNewUser = async(req, res) => {
     try {
 
-        var newUser = new Users({ Username: req.body.Username, Password: req.body.Password });
+        var passwordHash = await bcrypt.hash(req.body.Password, 10);
 
-        var user = newUser.save();
+        var newUser = new Users({ Username: req.body.Username, Password: passwordHash });
+
+        var user = await newUser.save();
 
         res.json(user);
 
@@ -35,26 +37,35 @@ export const getAllUsers = async(req, res) => {
 };
 
 export const loginUser = async(req, res) => {
+
     try {
 
-        var user = await Users.findOne({ Username: req.body.Username, Password: req.body.Password });
+        var user = await Users.findOne({ Username: req.body.Username });
 
         if (!user)
             return res
                 .status(404)
-                .json({ message: 'not found user: ' + req.body.Username });
+                .json({ message: 'Authentication failed: ' + req.body.Username });
 
+        let verify = await bcrypt.compare(req.body.Password, user.Password);
 
-        let token = jwt.sign({
-            user
-        }, 'gedgonz', { expiresIn: '24h' });
+        if (verify) {
 
-        res.json({
-            auth: true,
-            toke: token
-        });
+            let token = jwt.sign({
+                user
+            }, 'gedgonz', { expiresIn: '24h' });
+
+            res.json({
+                auth: true,
+                toke: token
+            });
+
+        } else {
+            res.status(400).json({ message: 'Authentication failed' });
+        }
 
     } catch (error) {
-        res.status(500).json({ message: 'error:' + error });
+        res.status(500).json({ message: 'Authentication failed' });
     }
+
 };
